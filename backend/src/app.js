@@ -3,8 +3,12 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
+
 const cropListingRoutes = require("./routes/cropListingRoutes");
 const authRoutes = require("./routes/authRoutes");
+
+// NEW: Import recommendation routes
+const recommendationRoutes = require("./routes/recommendationRoutes");
 
 // Allow requests from our Vite frontend.
 app.use(
@@ -28,6 +32,9 @@ app.get("/api/health", (req, res) => {
 
 app.use("/api/crop-listings", cropListingRoutes);
 app.use("/api/auth", authRoutes);
+
+// NEW: Register recommendation API
+app.use("/api/recommendations", recommendationRoutes);
 
 // Handle unknown API routes.
 app.use((req, res) => {
