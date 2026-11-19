@@ -60,6 +60,21 @@ const cropListingSchema = new mongoose.Schema(
       enum: ["available", "negotiating", "sold", "withdrawn"],
       default: "available",
     },
+
+    saleDetails: {
+      sellingPricePerQuintal: {
+        type: Number,
+        min: 0,
+      },
+      saleDate: {
+        type: Date,
+      },
+      saleChannel: {
+        type: String,
+        enum: ["online", "offline"],
+      },
+    },
+
   },
   {
     timestamps: true,
